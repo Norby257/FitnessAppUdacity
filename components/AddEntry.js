@@ -6,7 +6,7 @@ export default class AddEntry extends Component {
     render() {
         return (
             <View>
-                {getMetricMetaInfo('Bike').getIcon()}
+                {getMetricMetaInfo('bike').getIcon()}
             </View>
         )
     }
