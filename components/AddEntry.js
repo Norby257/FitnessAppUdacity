@@ -3,6 +3,8 @@ import {View, Text} from 'react-native'
 import {getMetricMetaInfo} from '../utils/helpers'
 import UdaciSlider from './UdaciSlider'
 import UdaciSteppers from './UdaciSteppers'
+import DateHeader from './DateHeader'
+
 export default class AddEntry extends Component {
     //state 
     //   get data for the specific day 
@@ -14,18 +16,21 @@ export default class AddEntry extends Component {
         eat: 0
     }
 
-    incremement = (metric ) => {
+    incremement = (metric) => {
+        //   set max of metric, and increment amount
        const{max, step} = getMetricMetaInfo(metric)
+       //    call setState with function to get currentState
        this.setState((state)=> {
            const count = state[metric] + step
            return {
                // prev state and current state merged 
+               //   use params to get all the state propertoes
                ...state, 
                [metric]: count > max ?  max : count 
            }
        })
     }
-    decrement = (metric ) => {
+    decrement = (metric) => {
         this.setState((state)=> {
             const count = state[metric] - getMetricMetaInfo(metric).step
             return {
@@ -49,17 +54,26 @@ export default class AddEntry extends Component {
         const metaInfo = getMetricMetaInfo()
         return (
             <View>
+                <DateHeader date={(new Date()).toLocaleDateString()} />
                 {Object.keys(metaInfo).map((key)=> {
                     const {getIcon, type, ...rest} = metaInfo[key]
                     const value = this.state[key]
                     return (
                         <View key={key}>
-                            getIcon()}
+                            {getIcon()}
                             {type === 'slider'
-                        > <UdaciSlider
-                        vale={value}
-                    onChange={(vale)}}
-                        </View>
+                       ? <UdaciSlider
+                        value={value}
+                    onChange={(value) => this.slide(key, value)}
+                    {...rest}
+                       /> 
+                       : <UdaciSteppers
+                       value={value}
+                       onIncrement={()=> this.incremement(key)}
+                       onDecrement={()=> this.decrement(key)}
+                       {...rest}
+                       />}
+                       </View>
                     )
                 })}
             </View>
