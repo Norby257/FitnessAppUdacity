@@ -4,6 +4,7 @@ import AddEntry from './components/AddEntry'
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
 import reducer from './reducers'
+import History from './components/History'
 //   wrap everything in provider component and pass it  store and pass it 
 import {
   Text,
