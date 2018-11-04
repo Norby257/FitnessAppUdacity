@@ -1,6 +1,7 @@
 import React from 'react';
 import {Ionicons} from '@expo/vector-icons'
 import AddEntry from './components/AddEntry'
+
 import {
   Text,
   View,
@@ -8,20 +9,18 @@ import {
   TouchableHighlight,
   TouchableNativeFeedback, // only on android
   TouchableOpacity,
-  TouchableWithoutFeedback // does not change background and does not work with text
+  TouchableWithoutFeedback,
+  Slider 
 } from 'react-native'
 
 export default class App extends React.Component {
-  handlePress = () => {
-    alert('Hello!')
-  }
+
 
   render() {
     return (
       <View style={styles.container}>
-        
-         
         <AddEntry />
+       
       </View>
     );
   }
