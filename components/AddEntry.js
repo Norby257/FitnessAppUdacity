@@ -6,6 +6,7 @@ import UdaciSteppers from './UdaciSteppers'
 import DateHeader from './DateHeader'
 import {Ionicons} from '@expo/vector-icons'
 import TextButton from './TextButton'
+import {submitEntry, removeEntry} from '../utils/api'
 
 function SubmitBtn ({onPress}) {
     return (
@@ -74,8 +75,8 @@ export default class AddEntry extends Component {
         }))
         //   update redux 
         //   navigate to home 
-
-        //   save to "DB"
+        submitEntry({key, entry})
+        //   save to "DB" - react native local storage 
         //   clean local notification 
 
      }
@@ -85,6 +86,7 @@ export default class AddEntry extends Component {
         //   update REdux 
         //   route to Home 
         // update DB 
+        removeEntry(key)
     }
     render() {
         //  up to 4:15 in the add entry render 
