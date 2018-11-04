@@ -143,7 +143,7 @@ export function isBetween (num, x, y) {
       max: 10,
       unit: 'rating',
       step: 1,
-      type: 'steppers',
+      type: 'slider',
       getIcon() {
         return (
           <View style={[styles.iconContainer, {backgroundColor: pink}]}>
