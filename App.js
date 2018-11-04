@@ -6,9 +6,9 @@ import {
   View,
   StyleSheet,
   TouchableHighlight,
-  TouchableNativeFeedback,
+  TouchableNativeFeedback, // only on android
   TouchableOpacity,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback // does not change background and does not work with text
 } from 'react-native'
 
 export default class App extends React.Component {
@@ -19,9 +19,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity style={styles.btn} onPress={this.handlePress}>
-          <Text style={styles.btnText}> TouchableHighlight </Text>
-        </TouchableOpacity>
+        
          
         <AddEntry />
       </View>
