@@ -6,6 +6,8 @@ import {Provider} from 'react-redux'
 import reducer from './reducers'
 import History from './components/History'
 //   wrap everything in provider component and pass it  store and pass it 
+//   fix AddEntry vs addEntry 
+
 import {
   Text,
   View,
@@ -24,6 +26,8 @@ export default class App extends React.Component {
     return (
     <Provider store={createStore(reducer)}>
       <View style={{flex: 1}}>
+       <View style={{height: 20}} />
+       <History />
         <AddEntry />
        
       </View>
