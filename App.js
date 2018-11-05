@@ -5,11 +5,19 @@ import {createStore} from 'redux'
 import {createBottomTabNavigator} from 'react-navigation'
 import {purple, white} from './utils/colors'
 import {Provider} from 'react-redux'
+import {constants} from 'expo'
 import reducer from './reducers'
 import History from './components/History'
 //   wrap everything in provider component and pass it  store and pass it 
 //   fix AddEntry vs addEntry 
 
+function UdaciStatusBar({backgroundColor, ...props}) {
+  return (
+    <View style={{backgroundColor, height: Constants.StatusBarHeight}}>
+      <StatusBar translucent backgroundColor={backgroundColor} {...props} />
+    </View>
+  )
+}
 // fix this navigation and consult docs 
 const Tabs = createBottomTabNavigator(
   {
@@ -64,6 +72,7 @@ import {
   Text,
   View,
   Platform,
+  StatusBar,
   StyleSheet,
   TouchableHighlight,
   TouchableNativeFeedback, // only on android
