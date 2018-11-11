@@ -2,7 +2,7 @@ import React from 'react';
 import {Ionicons, FontAwesome} from '@expo/vector-icons'
 import AddEntry from './components/AddEntry'
 import {createStore} from 'redux'
-import {createBottomTabNavigator, TabNavigator} from 'react-navigation'
+import {createBottomTabNavigator, TabNavigator, createStackNavigator} from 'react-navigation'
 import {purple, white} from './utils/colors'
 import {Provider} from 'react-redux'
 import {Constants} from 'expo' 
@@ -73,6 +73,24 @@ const Tabs = createBottomTabNavigator(
   }
 );
 
+const MainNavigator = createStackNavigator({
+  Home: {
+    screen: Tabs,
+    navigationOptions: {
+      header: null,
+    },
+  },
+  EntryDetail: {
+    screen: EntryDetail,
+    navigationOptions: ({ navigation }) => ({
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: purple,
+      },
+    }),
+  },
+});
+
 
 export default class App extends React.Component {
 
@@ -83,7 +101,8 @@ export default class App extends React.Component {
       <View style={{flex: 1}}>
        <UdaciStatusBar backgroundColor={purple} barStyle='light-content' />
        
-       <Tabs />
+       <MainNavigator />
+       
        
       </View>
     </Provider>
