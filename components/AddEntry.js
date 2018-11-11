@@ -10,7 +10,7 @@ import {submitEntry, removeEntry} from '../utils/api'
 import {connect} from 'react-redux'
 import {addEntry} from '../actions'
 import {white, purple} from '../utils/colors'
-
+import {NavigationActions} from 'react-native'
 
 function SubmitBtn ({onPress}) {
     return (
@@ -86,6 +86,7 @@ function SubmitBtn ({onPress}) {
         //   update redux 
        
         //   navigate to home 
+        this.toHome()
         submitEntry({key, entry})
         //   save to "DB" - react native local storage 
         //   clean local notification 
@@ -100,7 +101,15 @@ function SubmitBtn ({onPress}) {
         //   update REdux 
         //   route to Home 
         // update DB 
+        this.toHome()
         removeEntry(key)
+    }
+
+    toHome = () => {
+        this.props.navigation.dispatch(NavigationActions.back({
+            key: 'AddEntry'
+
+        }))
     }
     render() {
         //  up to 4:15 in the add entry render 
