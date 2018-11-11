@@ -46,9 +46,13 @@ import { TouchableOpacity } from '../utils/colors';
       )
     }
      return (
-      <View>
-        <Text>Live</Text>
-        <Text>{JSON.stringify(this.state)}</Text>
+      <View style={styles.container}>
+       <View style={styles.directionContainer}>
+        <Text style={styles.header}>You're Heading</Text>
+        <Text style={styles.direction}> North</Text>
+      </View>
+      
+
       </View>
     )
   }
