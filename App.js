@@ -10,7 +10,7 @@ import reducer from './reducers'
 import History from './components/History'
 import Live from './components/Live'
 import EntryDetail from './components/EntryDetail'
-
+import {setLocalNotification} from './utils/helpers'
 import {
   Text,
   View,
@@ -101,7 +101,9 @@ const MainNavigator = createStackNavigator({
 
 
 export default class App extends React.Component {
-
+componentDidMount() {
+  setLocalNotification()
+}
 
   render() {
     return (
