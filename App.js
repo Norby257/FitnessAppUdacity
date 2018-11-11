@@ -41,7 +41,21 @@ const Tabs = createBottomTabNavigator(
   {
     History: History,
     AddEntry: AddEntry,
+    // Live: Live, 
+    // screen: {
+    //   screen: Live,
+    //   navigationOptions: {
+    //     tabBarLabel: 'Live',
+    //     tabBarIcon: ({tintColor}) => <Ionicons name='ios-speedometer' size={30} color={tintColor} />
+  
+    //   },
+
+    // }
   },
+
+
+
+
   {
     navigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ tintColor }) => {
@@ -52,6 +66,8 @@ const Tabs = createBottomTabNavigator(
           <Ionicons name="ios-bookmarks" size={30} color={tintColor} />
         ) : (
           <FontAwesome name="plus-square" size={30} color={tintColor} />
+
+         
         );
       },
     }),

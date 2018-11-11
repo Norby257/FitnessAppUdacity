@@ -8,8 +8,11 @@ import { View, Text, ActivityIndicator } from 'react-native'
   }
   render() {
     const { status, coords, direction } = this.state
-     if (status === null) {
-      return <ActivityIndicator style={{marginTop: 30}}/>
+   
+    //   conditional rendering dependent on if user gives permission 
+
+    if (status === null) {
+     return <ActivityIndicator style={{marginTop: 30}} />
     }
      if (status === 'denied') {
       return (
