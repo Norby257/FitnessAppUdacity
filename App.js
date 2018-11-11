@@ -82,12 +82,12 @@ const MainNavigator = createStackNavigator({
   },
   EntryDetail: {
     screen: EntryDetail,
-    navigationOptions: ({ navigation }) => ({
+    navigationOptions:{
       headerTintColor: white,
       headerStyle: {
         backgroundColor: purple,
       },
-    }),
+    },
   },
 });
 
