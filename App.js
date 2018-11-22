@@ -1,20 +1,17 @@
 import React from 'react';
 import {Ionicons, FontAwesome} from '@expo/vector-icons'
-import AddEntry from './components/AddEntry'
 import {createStore} from 'redux'
 import {createBottomTabNavigator, TabNavigator, createStackNavigator} from 'react-navigation'
-import {purple, white} from './utils/colors'
 import {Provider} from 'react-redux'
 import {Constants} from 'expo' 
 import reducer from './reducers'
-import History from './components/History'
-import Live from './components/Live'
-import EntryDetail from './components/EntryDetail'
-import {setLocalNotification} from './utils/helpers'
+import {purple, white} from './utils/colors'
+
+import {MainNavigator} from './components/MainNavigator'
+import {setLocalNotification} from './utils/notifications'
 import {
   Text,
   View,
-  Platform,
   StatusBar,
   StyleSheet,
   TouchableHighlight,
@@ -35,69 +32,6 @@ function UdaciStatusBar({backgroundColor, ...props}) {
     </View>
   )
 }
-
-
-const Tabs = createBottomTabNavigator(
-  {
-    History: History,
-    AddEntry: AddEntry,
-    Live: Live
-   
-  },
-
-
-
-
-  {
-    navigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ tintColor }) => {
-        const { routeName } = navigation.state;
-        // You can return any component that you like here! We usually use an
-        // icon component from react-native-vector-icons
-        return routeName === 'History' ? (
-          <Ionicons name="ios-bookmarks" size={30} color={tintColor} />
-        ) : (
-          <FontAwesome name="plus-square" size={30} color={tintColor} />
-
-         
-        );
-      },
-    }),
-    tabBarOptions: {
-      showIcon: true,
-      activeTintColor: Platform.OS === 'ios' ? purple : white,
-      style: {
-        height: 56,
-        backgroundColor: Platform.OS === 'ios' ? white : purple,
-        shadowColor: 'rgba(0, 0, 0, 0.24)',
-        shadowOffset: {
-          width: 0,
-          height: 3,
-        },
-        shadowRadius: 6,
-        shadowOpacity: 1,
-      },
-    },
-  }
-);
-
-const MainNavigator = createStackNavigator({
-  Home: {
-    screen: Tabs,
-    navigationOptions: {
-      header: null,
-    },
-  },
-  EntryDetail: {
-    screen: EntryDetail,
-    navigationOptions:{
-      headerTintColor: white,
-      headerStyle: {
-        backgroundColor: purple,
-      },
-    },
-  },
-});
 
 
 export default class App extends React.Component {
