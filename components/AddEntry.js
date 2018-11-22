@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {View, TouchableOpacity, Text, Platform, StyleSheet} from 'react-native'
 import {getMetricMetaInfo, timeToString, getDailyReminderValue} from '../utils/helpers'
+import  {clearLocalNotification, setLocalNotification} from '../utils/notifications'
+
 import UdaciSlider from './UdaciSlider'
 import UdaciSteppers from './UdaciSteppers'
 import DateHeader from './DateHeader'
@@ -11,6 +13,7 @@ import {connect} from 'react-redux'
 import {addEntry} from '../actions'
 import {white, purple} from '../utils/colors'
 import {NavigationActions} from 'react-native'
+ 
 
 function SubmitBtn ({onPress}) {
     return (
@@ -84,12 +87,15 @@ function SubmitBtn ({onPress}) {
 
         }))
         //   update redux 
-       
+       //    to schedule a local notifcation use this:
+       //   Notifications.scheduleLocalNotificationsAysnc 
         //   navigate to home 
         this.toHome()
         submitEntry({key, entry})
         //   save to "DB" - react native local storage 
         //   clean local notification 
+        clearLocalNotification()
+        .then(setLocalNotification)
 
      }
 
